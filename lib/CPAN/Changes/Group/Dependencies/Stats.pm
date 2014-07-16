@@ -29,7 +29,7 @@ lsub symbol_Added     => sub { q[+] };
 lsub symbol_Upgrade   => sub { q[↑] };
 lsub symbol_Downgrade => sub { q[↓] };
 lsub symbol_Removed   => sub { q[-] };
-lsub symbol_Changed   => sub { '~' };
+lsub symbol_Changed   => sub { q[~] };
 
 sub _phase_rel_changes {
   my ( $self, $phase, $rel, $phases ) = @_;
@@ -40,7 +40,7 @@ sub _phase_rel_changes {
 
   my @parts;
   for my $type (qw( Added Upgrade Downgrade Removed Changed )) {
-    next unless 0 < $stash->{$type};
+    next if 1 > $stash->{$type};
     next unless my $method = $self->can( 'symbol_' . $type );
     push @parts, $self->$method() . $stash->{$type};
   }
