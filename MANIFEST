@@ -16,6 +16,10 @@ example/moose-dif/Moose-2.1210-META.json
 example/moose-diff.pl
 lib/CPAN/Changes/Group/Dependencies/Stats.pm
 maint/perlcritic.rc.gen.pl
+misc/Changes.deps
+misc/Changes.deps.all
+misc/Changes.deps.dev
+misc/Changes.deps.opt
 misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_CPAN_Changes_Group_Dependencies_Stats_pm.t
