@@ -7,13 +7,116 @@ package CPAN::Changes::Group::Dependencies::Stats;
 
 our $VERSION = '0.001000';
 
-# ABSTRACT:
+# ABSTRACT: Create a Dependencies::Stats section detailing summarised differences
 
 # AUTHORITY
 
-use Moose;
+use Moo;
+use CPAN::Meta::Prereqs::Diff;
+use MooX::Lsub qw( lsub );
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
+lsub new_prereqs => sub { die 'Required attribute <new_prereqs> was not provided' };
+lsub old_prereqs => sub { die 'Required attribute <old_prereqs> was not provided' };
+lsub prereqs_diff => sub {
+  my ($self) = @_;
+  return CPAN::Meta::Prereqs::Diff->new(
+    new_prereqs => $self->new_prereqs,
+    old_prereqs => $self->old_prereqs,
+  );
+};
+lsub symbol_Added     => sub { '+' };
+lsub symbol_Upgrade   => sub { '↑' };
+lsub symbol_Downgrade => sub { '↓' };
+lsub symbol_Removed   => sub { '-' };
+lsub symbol_Changed   => sub { '~' };
+
+sub _phase_rel_changes {
+  my ( $self, $phase, $rel, $phases ) = @_;
+  return unless exists $phases->{$phase};
+  return unless exists $phases->{$phase}->{$rel};
+
+  my $stash = $phases->{$phase}->{$rel};
+
+  my @parts;
+  for my $type (qw( Added Upgrade Downgrade Removed Changed )) {
+    next unless $stash->{$type} > 0;
+    next unless my $method = $self->can( 'symbol_' . $type );
+    push @parts, $self->$method() . $stash->{$type};
+  }
+  return unless @parts;
+  return join q[ ], @parts;
+}
+
+sub _phase_changes {
+  my ( $self, $phase, $phases ) = @_;
+
+  my @out;
+  my @extra;
+
+  if ( my $recommends = $self->_phase_rel_changes( $phase, 'recommends', $phases ) ) {
+    push @extra, 'recommends: ' . $recommends;
+  }
+  if ( my $suggested = $self->_phase_rel_changes( $phase, 'suggests', $phases ) ) {
+    push @extra, 'suggests: ' . $suggested;
+  }
+
+  if ( my $required = $self->_phase_rel_changes( $phase, 'requires', $phases ) ) {
+    push @out, $required;
+  }
+  if (@extra) {
+    push @out, sprintf '(%s)', join q[, ], @extra;
+  }
+  if (@out) {
+    return sprintf '%s: %s', $phase, join q[ ], @out;
+  }
+  return;
+}
+
+sub _phase_rel_stats {
+  my ($self)  = @_;
+  my (@diffs) = $self->prereqs_diff->diff(
+    phases => [qw( configure build runtime test develop )],
+    types  => [qw( requires recommends suggests conflicts )],
+  );
+  my $phases = {};
+  for my $diff (@diffs) {
+    my $phase_m = $diff->phase;
+
+    my $rel = $diff->type;
+
+    if ( not exists $phases->{$phase_m} ) {
+      $phases->{$phase_m} = {};
+    }
+    if ( not exists $phases->{$phase_m}->{$rel} ) {
+      $phases->{$phase_m}->{$rel} = { Added => 0, Upgrade => 0, Downgrade => 0, Removed => 0, Changed => 0 };
+    }
+    my $stash = $phases->{$phase_m}->{$rel};
+
+    $stash->{Added}++   if $diff->is_addition;
+    $stash->{Removed}++ if $diff->is_removal;
+    if ( $diff->is_change ) {
+      $stash->{Upgrade}++   if $diff->is_upgrade;
+      $stash->{Downgrade}++ if $diff->is_downgrade;
+      if ( not $diff->is_upgrade and not $diff->is_downgrade ) {
+        $stash->{Changed}++;
+      }
+    }
+  }
+  return $phases;
+}
+
+sub changes {
+  my ($self) = @_;
+  my @changes = ();
+
+  my $phases = $self->_phase_rel_stats;
+
+  for my $phase ( sort keys %{$phases} ) {
+    push @changes, $self->_phase_changes( $phase, $phases );
+  }
+  return \@changes;
+}
+
+no Moo;
 
 1;
