@@ -175,6 +175,9 @@ sub _phase_rel_stats {
 
 
 
+
+
+
 sub changes {
   my ($self) = @_;
   my @changes = ();
@@ -242,6 +245,9 @@ version 0.001000
 =head2 C<changes>
 
 Returns a list of change entries.
+
+  my $changes = $object->changes;
+  say $_ for @{$changes};
 
 Format:
 

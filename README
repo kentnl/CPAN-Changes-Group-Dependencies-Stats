@@ -40,6 +40,9 @@ METHODS
   "changes"
     Returns a list of change entries.
 
+      my $changes = $object->changes;
+      say $_ for @{$changes};
+
     Format:
 
       %phase: %requiredstats (%optlabel: %optstats, ...)
