@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.001001';
 
 # ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
@@ -206,7 +206,7 @@ CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 SYNOPSIS
 

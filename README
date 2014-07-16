@@ -3,7 +3,7 @@ NAME
     section detailing summarized differences
 
 VERSION
-    version 0.001000
+    version 0.001001
 
 SYNOPSIS
       use CPAN::Changes::Release;
