@@ -7,7 +7,7 @@ package CPAN::Changes::Group::Dependencies::Stats;
 
 our $VERSION = '0.001000';
 
-# ABSTRACT: Create a Dependencies::Stats section detailing summarised differences
+# ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -130,7 +130,7 @@ __END__
 
 =head1 NAME
 
-CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section detailing summarised differences
+CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section detailing summarized differences
 
 =head1 VERSION
 

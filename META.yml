@@ -1,5 +1,5 @@
 ---
-abstract: 'Create a Dependencies::Stats section detailing summarised differences'
+abstract: 'Create a Dependencies::Stats section detailing summarized differences'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:

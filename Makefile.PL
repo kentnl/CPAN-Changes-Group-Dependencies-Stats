@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Create a Dependencies::Stats section detailing summarised differences",
+  "ABSTRACT" => "Create a Dependencies::Stats section detailing summarized differences",
   "AUTHOR" => "Kent Fredric <kentfredric\@gmail.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"

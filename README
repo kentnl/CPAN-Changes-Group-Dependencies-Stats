@@ -1,6 +1,6 @@
 NAME
     CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats
-    section detailing summarised differences
+    section detailing summarized differences
 
 VERSION
     version 0.001000
