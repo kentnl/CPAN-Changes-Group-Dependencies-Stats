@@ -110,6 +110,7 @@ my $static_prereqs = do { my $x = {
        'runtime' => {
                       'requires' => {
                                       'CPAN::Meta::Prereqs::Diff' => '0',
+                                      'Carp' => '0',
                                       'Moo' => '0',
                                       'MooX::Lsub' => '0',
                                       'perl' => '5.008',

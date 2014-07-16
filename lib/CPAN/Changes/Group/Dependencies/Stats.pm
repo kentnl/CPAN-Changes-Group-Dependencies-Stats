@@ -12,11 +12,12 @@ our $VERSION = '0.001000';
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo;
+use Carp qw( croak );
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
 
-lsub new_prereqs => sub { die 'Required attribute <new_prereqs> was not provided' };
-lsub old_prereqs => sub { die 'Required attribute <old_prereqs> was not provided' };
+lsub new_prereqs => sub { croak 'Required attribute <new_prereqs> was not provided' };
+lsub old_prereqs => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub prereqs_diff => sub {
   my ($self) = @_;
   return CPAN::Meta::Prereqs::Diff->new(
@@ -24,10 +25,10 @@ lsub prereqs_diff => sub {
     old_prereqs => $self->old_prereqs,
   );
 };
-lsub symbol_Added     => sub { '+' };
-lsub symbol_Upgrade   => sub { '↑' };
-lsub symbol_Downgrade => sub { '↓' };
-lsub symbol_Removed   => sub { '-' };
+lsub symbol_Added     => sub { q[+] };
+lsub symbol_Upgrade   => sub { q[↑] };
+lsub symbol_Downgrade => sub { q[↓] };
+lsub symbol_Removed   => sub { q[-] };
 lsub symbol_Changed   => sub { '~' };
 
 sub _phase_rel_changes {

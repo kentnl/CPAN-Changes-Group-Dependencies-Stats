@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "NAME" => "CPAN::Changes::Group::Dependencies::Stats",
   "PREREQ_PM" => {
     "CPAN::Meta::Prereqs::Diff" => 0,
+    "Carp" => 0,
     "Moo" => 0,
     "MooX::Lsub" => 0,
     "strict" => 0,
@@ -44,6 +45,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "CPAN::Meta::Prereqs::Diff" => 0,
+  "Carp" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec::Functions" => 0,
   "List::Util" => 0,
