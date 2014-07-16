@@ -5,7 +5,7 @@ use utf8;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.001001';
 
 # ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
