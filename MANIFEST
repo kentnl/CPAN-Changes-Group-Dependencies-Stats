@@ -11,6 +11,9 @@ Makefile.PL
 README
 dist.ini
 dist.ini.meta
+example/moose-dif/Moose-2.1005-META.json
+example/moose-dif/Moose-2.1210-META.json
+example/moose-diff.pl
 lib/CPAN/Changes/Group/Dependencies/Stats.pm
 maint/perlcritic.rc.gen.pl
 misc/perlcritic.deps

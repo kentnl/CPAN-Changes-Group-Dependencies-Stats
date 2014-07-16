@@ -16,6 +16,39 @@ use Carp qw( croak );
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 lsub new_prereqs => sub { croak 'Required attribute <new_prereqs> was not provided' };
 lsub old_prereqs => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub prereqs_diff => sub {
@@ -106,6 +139,42 @@ sub _phase_rel_stats {
   return $phases;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub changes {
   my ($self) = @_;
   my @changes = ();
@@ -135,6 +204,74 @@ CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section
 =head1 VERSION
 
 version 0.001000
+
+=head1 SYNOPSIS
+
+  use CPAN::Changes::Release;
+  use CPAN::Changes::Group::Dependencies::Stats;
+
+  my $s = CPAN::Changes::Group::Dependencies::Stats->new(
+    new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs
+    old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs
+  );
+
+  # Currently slightly complicated due to groups themselves
+  # not presently being pluggable.
+  my $rel = CPAN::Changes::Release->new( version => '1.01' );
+  if (@{ my $changes = $s->changes }) {
+    $rel->add_group( 'Dependencies::Stats' );
+    $rel->add_changes(
+      { group => 'Dependencies::Stats' },
+      'Change statistics since 1.00',
+      @{$changes}
+    );
+  }
+  $rel->serialize();
+
+  # RESULT
+  #
+  # [Dependencies::Stats]
+  # - Change statistics since 1.00
+  # - build: -1 (recommends: -1)
+  # - configure: +1 -1 (recommends: +1 -1)
+  # - develop: +5 -5 (suggests: +2 -1)
+  # - test: (recommends: +1 ↑1)
+
+=head1 METHODS
+
+=head2 C<changes>
+
+Returns a list of change entries.
+
+Format:
+
+  %phase: %requiredstats (%optlabel: %optstats, ...)
+
+C<%phase> is one of C<configure>, C<build>, C<runtime>, C<develop>, C<test>
+
+C<%optlabel> is one of C<recommends>, C<suggests>
+
+C<%requiredstats> and C<%optstats> are strings of stat changes:
+
+  %symbol%number %symbol%number ...
+
+C<%symbol> is:
+
+  +   a dependency previously unseen in this phase/rel was added.
+  ↑   a dependency in this phase/rel had its version requirement increased.
+  ↓   a dependency in this phase/rel had its version requirement decreased.
+  -   this phase/rel had a dependency removed
+  ~   a dependency type where either side was a complex version requirement changed in some way.
+
+For instance, this L<diff|https://metacpan.org/diff/file?target=ETHER/Moose-2.1210/META.json&source=ETHER/Moose-2.1005/META.json> would display as:
+
+  [Dependencies::Stats]
+  - configure: +2
+  - develop: +12 ↑3 -2 (suggests: +58)
+  - runtime: +3
+  - test: +1 ↓1 -1 (recommends: +2)
+
+Which is far less scary ☺
 
 =head1 AUTHOR
 
