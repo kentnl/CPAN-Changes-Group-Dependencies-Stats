@@ -7,16 +7,17 @@ package CPAN::Changes::Group::Dependencies::Stats;
 
 our $VERSION = '0.001000';
 
-# ABSTRACT: Create a Dependencies::Stats section detailing summarised differences
+# ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
 # AUTHORITY
 
 use Moo;
+use Carp qw( croak );
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
 
-lsub new_prereqs => sub { die 'Required attribute <new_prereqs> was not provided' };
-lsub old_prereqs => sub { die 'Required attribute <old_prereqs> was not provided' };
+lsub new_prereqs => sub { croak 'Required attribute <new_prereqs> was not provided' };
+lsub old_prereqs => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub prereqs_diff => sub {
   my ($self) = @_;
   return CPAN::Meta::Prereqs::Diff->new(
@@ -24,11 +25,11 @@ lsub prereqs_diff => sub {
     old_prereqs => $self->old_prereqs,
   );
 };
-lsub symbol_Added     => sub { '+' };
-lsub symbol_Upgrade   => sub { '↑' };
-lsub symbol_Downgrade => sub { '↓' };
-lsub symbol_Removed   => sub { '-' };
-lsub symbol_Changed   => sub { '~' };
+lsub symbol_Added     => sub { q[+] };
+lsub symbol_Upgrade   => sub { q[↑] };
+lsub symbol_Downgrade => sub { q[↓] };
+lsub symbol_Removed   => sub { q[-] };
+lsub symbol_Changed   => sub { q[~] };
 
 sub _phase_rel_changes {
   my ( $self, $phase, $rel, $phases ) = @_;
@@ -39,7 +40,7 @@ sub _phase_rel_changes {
 
   my @parts;
   for my $type (qw( Added Upgrade Downgrade Removed Changed )) {
-    next unless $stash->{$type} > 0;
+    next if 1 > $stash->{$type};
     next unless my $method = $self->can( 'symbol_' . $type );
     push @parts, $self->$method() . $stash->{$type};
   }
