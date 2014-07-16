@@ -24,11 +24,11 @@ lsub prereqs_diff => sub {
     old_prereqs => $self->old_prereqs,
   );
 };
-
-my $sym_add = '+';
-my $sym_upg = '↑';
-my $sym_dwn = '↓';
-my $sym_rmv = '-';
+lsub symbol_Added     => sub { '+' };
+lsub symbol_Upgrade   => sub { '↑' };
+lsub symbol_Downgrade => sub { '↓' };
+lsub symbol_Removed   => sub { '-' };
+lsub symbol_Changed   => sub { '~' };
 
 sub _phase_rel_changes {
   my ( $self, $phase, $rel, $phases ) = @_;
@@ -38,17 +38,10 @@ sub _phase_rel_changes {
   my $stash = $phases->{$phase}->{$rel};
 
   my @parts;
-  if ( $stash->{Added} > 0 ) {
-    push @parts, $sym_add . $stash->{Added};
-  }
-  if ( $stash->{Upgrade} > 0 ) {
-    push @parts, $sym_upg . $stash->{Upgrade};
-  }
-  if ( $stash->{Downgrade} > 0 ) {
-    push @parts, $sym_dwn . $stash->{Downgrade};
-  }
-  if ( $stash->{Removed} > 0 ) {
-    push @parts, $sym_rmv . $stash->{Removed};
+  for my $type (qw( Added Upgrade Downgrade Removed Changed )) {
+    next unless $stash->{$type} > 0;
+    next unless my $method = $self->can( 'symbol_' . $type );
+    push @parts, $self->$method() . $stash->{$type};
   }
   return unless @parts;
   return join q[ ], @parts;

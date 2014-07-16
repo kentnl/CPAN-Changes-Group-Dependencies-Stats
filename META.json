@@ -113,6 +113,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats.git",
+         "web" : "https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats"
+      }
+   },
    "version" : "0.001000",
    "x_BuiltWith" : {
       "modules" : {

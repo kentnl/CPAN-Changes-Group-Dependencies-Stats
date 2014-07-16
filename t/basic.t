@@ -8,6 +8,14 @@ use Test::Differences;
 
 use CPAN::Changes::Group::Dependencies::Stats;
 
+{
+  my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+    old_prereqs => {},
+    new_prereqs => {},
+  );
+
+  eq_or_diff $diff->changes, [], 'No prereqs';
+}
 for my $phase (qw (  runtime build configure test develop )) {
   subtest "$phase basics" => sub {
     {

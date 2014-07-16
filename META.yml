@@ -30,6 +30,10 @@ requires:
   strict: '0'
   utf8: '0'
   warnings: '0'
+resources:
+  bugtracker: https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats/issues
+  homepage: https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats
+  repository: https://github.com/kentfredric/CPAN-Changes-Group-Dependencies-Stats.git
 version: '0.001000'
 x_BuiltWith:
   modules:
