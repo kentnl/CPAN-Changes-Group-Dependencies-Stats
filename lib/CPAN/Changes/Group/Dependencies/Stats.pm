@@ -40,7 +40,7 @@ sub _phase_rel_changes {
 
   my @parts;
   for my $type (qw( Added Upgrade Downgrade Removed Changed )) {
-    next unless $stash->{$type} > 0;
+    next unless 0 < $stash->{$type};
     next unless my $method = $self->can( 'symbol_' . $type );
     push @parts, $self->$method() . $stash->{$type};
   }
