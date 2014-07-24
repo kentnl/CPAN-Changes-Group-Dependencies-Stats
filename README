@@ -3,28 +3,22 @@ NAME
     section detailing summarized differences
 
 VERSION
-    version 0.001001
+    version 0.002000
 
 SYNOPSIS
-      use CPAN::Changes::Release;
+      use CPAN::Changes::Release 0.29;
       use CPAN::Changes::Group::Dependencies::Stats;
 
       my $s = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs
-        old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs
+        prelude     => [ 'Change statistics since 1.00' ],
+        new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs,
+        old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs,
       );
 
       # Currently slightly complicated due to groups themselves
       # not presently being pluggable.
       my $rel = CPAN::Changes::Release->new( version => '1.01' );
-      if (@{ my $changes = $s->changes }) {
-        $rel->add_group( 'Dependencies::Stats' );
-        $rel->add_changes(
-          { group => 'Dependencies::Stats' },
-          'Change statistics since 1.00',
-          @{$changes}
-        );
-      }
+      $rel->attach( $s ) if $s->has_changes;
       $rel->serialize();
 
       # RESULT
