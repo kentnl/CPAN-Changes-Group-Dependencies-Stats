@@ -1,6 +1,6 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
-0.002000 2014-07-24T05:41:42Z
+0.002000 2014-07-24T05:46:13Z
  [00 Major]
  - Reimplement as a subclass of the new CPAN::Changes::Group
  - This greatly simplifies attaching this object to a release.
