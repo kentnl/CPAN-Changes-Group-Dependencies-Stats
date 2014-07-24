@@ -4,7 +4,7 @@ CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section
 
 # VERSION
 
-version 0.002000
+version 0.002001
 
 # SYNOPSIS
 
