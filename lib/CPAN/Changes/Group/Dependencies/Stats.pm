@@ -48,7 +48,7 @@ use MooX::Lsub qw( lsub );
 extends 'CPAN::Changes::Group';
 
 sub FOREIGNBUILDARGS {
-  my ( $class, @args ) = @_;
+  my ( undef, @args ) = @_;
   if ( @args % 2 == 0 ) {
     my (%args) = @args;
     $args{'name'} = 'Dependencies::Stats' unless exists $args{'name'};
