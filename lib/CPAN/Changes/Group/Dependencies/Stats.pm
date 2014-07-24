@@ -5,14 +5,16 @@ use utf8;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.002000';
 
 # ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
-use Moo;
+use Moo qw( extends has );
 use Carp qw( croak );
+use CPAN::Changes 0.29;
+use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
 
@@ -43,14 +45,31 @@ use MooX::Lsub qw( lsub );
 
 
 
+extends 'CPAN::Changes::Group';
 
 
 
 
 
+sub FOREIGNBUILDARGS {
+  my ( undef, @args ) = @_;
+  if ( @args % 2 == 0 ) {
+    my (%args) = @args;
+    $args{'name'} = 'Dependencies::Stats' unless exists $args{'name'};
+    return %args;
+  }
+  return @args;
+}
 
-lsub new_prereqs => sub { croak 'Required attribute <new_prereqs> was not provided' };
-lsub old_prereqs => sub { croak 'Required attribute <old_prereqs> was not provided' };
+lsub prelude          => sub { [] };
+lsub new_prereqs      => sub { croak 'Required attribute <new_prereqs> was not provided' };
+lsub old_prereqs      => sub { croak 'Required attribute <old_prereqs> was not provided' };
+lsub symbol_Added     => sub { q[+] };
+lsub symbol_Upgrade   => sub { q[↑] };
+lsub symbol_Downgrade => sub { q[↓] };
+lsub symbol_Removed   => sub { q[-] };
+lsub symbol_Changed   => sub { q[~] };
+
 lsub prereqs_diff => sub {
   my ($self) = @_;
   return CPAN::Meta::Prereqs::Diff->new(
@@ -58,11 +77,32 @@ lsub prereqs_diff => sub {
     old_prereqs => $self->old_prereqs,
   );
 };
-lsub symbol_Added     => sub { q[+] };
-lsub symbol_Upgrade   => sub { q[↑] };
-lsub symbol_Downgrade => sub { q[↓] };
-lsub symbol_Removed   => sub { q[-] };
-lsub symbol_Changed   => sub { q[~] };
+
+lsub _diff_items => sub {
+  my ($self)  = @_;
+  my (@diffs) = $self->prereqs_diff->diff(
+    phases => [qw( configure build runtime test develop )],
+    types  => [qw( requires recommends suggests conflicts )],
+  );
+  return \@diffs;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub has_changes {
+  my ($self) = @_;
+  return @{ $self->_diff_items } > 0;
+}
 
 sub _phase_rel_changes {
   my ( $self, $phase, $rel, $phases ) = @_;
@@ -107,13 +147,10 @@ sub _phase_changes {
 }
 
 sub _phase_rel_stats {
-  my ($self)  = @_;
-  my (@diffs) = $self->prereqs_diff->diff(
-    phases => [qw( configure build runtime test develop )],
-    types  => [qw( requires recommends suggests conflicts )],
-  );
+  my ($self) = @_;
   my $phases = {};
-  for my $diff (@diffs) {
+
+  for my $diff ( @{ $self->_diff_items } ) {
     my $phase_m = $diff->phase;
 
     my $rel = $diff->type;
@@ -180,7 +217,7 @@ sub _phase_rel_stats {
 
 sub changes {
   my ($self) = @_;
-  my @changes = ();
+  my @changes = @{ $self->prelude };
 
   my $phases = $self->_phase_rel_stats;
 
@@ -206,29 +243,23 @@ CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section
 
 =head1 VERSION
 
-version 0.001000
+version 0.002000
 
 =head1 SYNOPSIS
 
-  use CPAN::Changes::Release;
+  use CPAN::Changes::Release 0.29;
   use CPAN::Changes::Group::Dependencies::Stats;
 
   my $s = CPAN::Changes::Group::Dependencies::Stats->new(
-    new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs
-    old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs
+    prelude     => [ 'Change statistics since 1.00' ],
+    new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs,
+    old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs,
   );
 
   # Currently slightly complicated due to groups themselves
   # not presently being pluggable.
   my $rel = CPAN::Changes::Release->new( version => '1.01' );
-  if (@{ my $changes = $s->changes }) {
-    $rel->add_group( 'Dependencies::Stats' );
-    $rel->add_changes(
-      { group => 'Dependencies::Stats' },
-      'Change statistics since 1.00',
-      @{$changes}
-    );
-  }
+  $rel->attach( $s ) if $s->has_changes;
   $rel->serialize();
 
   # RESULT
@@ -241,6 +272,16 @@ version 0.001000
   # - test: (recommends: +1 ↑1)
 
 =head1 METHODS
+
+=head2 C<has_changes>
+
+Returns whether this group has any interesting changes or not.
+
+  if ( $group->has_changes ) {
+    $release->attach_group( $group );
+  } else {
+    $release->delete_group( $group->name );
+  }
 
 =head2 C<changes>
 
@@ -278,6 +319,8 @@ For instance, this L<diff|https://metacpan.org/diff/file?target=ETHER/Moose-2.12
   - test: +1 ↓1 -1 (recommends: +2)
 
 Which is far less scary ☺
+
+=for Pod::Coverage FOREIGNBUILDARGS
 
 =head1 AUTHOR
 

@@ -20,6 +20,8 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "CPAN::Changes::Group::Dependencies::Stats",
   "PREREQ_PM" => {
+    "CPAN::Changes" => "0.29",
+    "CPAN::Changes::Group" => 0,
     "CPAN::Meta::Prereqs::Diff" => 0,
     "Carp" => 0,
     "Moo" => 0,
@@ -29,14 +31,17 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
+    "CPAN::Changes::Release" => 0,
     "ExtUtils::MakeMaker" => 0,
+    "File::Spec" => 0,
     "File::Spec::Functions" => 0,
     "List::Util" => 0,
+    "Scalar::Util" => 0,
     "Test::Differences" => 0,
     "Test::More" => "0.89",
-    "version" => 0
+    "version" => "0.77"
   },
-  "VERSION" => "0.001000",
+  "VERSION" => "0.002000",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -44,18 +49,23 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "CPAN::Changes" => "0.29",
+  "CPAN::Changes::Group" => 0,
+  "CPAN::Changes::Release" => 0,
   "CPAN::Meta::Prereqs::Diff" => 0,
   "Carp" => 0,
   "ExtUtils::MakeMaker" => 0,
+  "File::Spec" => 0,
   "File::Spec::Functions" => 0,
   "List::Util" => 0,
   "Moo" => 0,
   "MooX::Lsub" => 0,
+  "Scalar::Util" => 0,
   "Test::Differences" => 0,
   "Test::More" => "0.89",
   "strict" => 0,
   "utf8" => 0,
-  "version" => 0,
+  "version" => "0.77",
   "warnings" => 0
 );
 
