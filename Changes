@@ -1,6 +1,15 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
-0.002000 2014-07-16T11:42:32Z
+0.002000 2014-07-24T05:41:42Z
+ [00 Major]
+ - Reimplement as a subclass of the new CPAN::Changes::Group
+ - This greatly simplifies attaching this object to a release.
+ - Add a 'prelude' property for arbritray pre-text to inject in a group.
+ - Add a 'name' property which can be set during construction to define the groups name
+ - Add a 'has_changes' property which will determine if there are changes prior to doing any internal formatting,
+   allowing usage as a pre-check if you don't want to add over-simplistic change nodes. ( Maybe I should override
+   is_empty here, not sure )
+
  [Dependencies::Stats]
  - Dependencies changed since 0.001000, see misc/*.deps* for details
  - develop: (suggests: ↑1)
