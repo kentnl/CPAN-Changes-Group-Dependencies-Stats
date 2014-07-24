@@ -23,7 +23,14 @@ my $stats = CPAN::Changes::Group::Dependencies::Stats->new(
   new_prereqs => { runtime => { requires => { 'Moo' => 2 } } },
 );
 
-$release->attach_group($stats);
+my $other_stats = CPAN::Changes::Group::Dependencies::Stats->new(
+  name        => "Other::Name",
+  old_prereqs => {},
+  new_prereqs => {},
+);
+
+$release->attach_group($stats)       if $stats->has_changes;
+$release->attach_group($other_stats) if $other_stats->has_changes;
 
 my $string = $release->serialize;
 

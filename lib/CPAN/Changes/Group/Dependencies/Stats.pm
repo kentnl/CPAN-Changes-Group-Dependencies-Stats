@@ -83,6 +83,23 @@ lsub _diff_items => sub {
   return \@diffs;
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+sub has_changes {
+  my ($self) = @_;
+  return @{ $self->_diff_items } > 0;
+}
+
 sub _phase_rel_changes {
   my ( $self, $phase, $rel, $phases ) = @_;
   return unless exists $phases->{$phase};
@@ -251,6 +268,16 @@ version 0.002000
   # - test: (recommends: +1 ↑1)
 
 =head1 METHODS
+
+=head2 C<has_changes>
+
+Returns whether this group has any interesting changes or not.
+
+  if ( $group->has_changes ) {
+    $release->attach_group( $group );
+  } else {
+    $release->delete_group( $group->name );
+  }
 
 =head2 C<changes>
 

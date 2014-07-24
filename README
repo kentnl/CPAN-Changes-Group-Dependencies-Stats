@@ -31,6 +31,15 @@ SYNOPSIS
       # - test: (recommends: +1 ↑1)
 
 METHODS
+  "has_changes"
+    Returns whether this group has any interesting changes or not.
+
+      if ( $group->has_changes ) {
+        $release->attach_group( $group );
+      } else {
+        $release->delete_group( $group->name );
+      }
+
   "changes"
     Returns a list of change entries.
 
