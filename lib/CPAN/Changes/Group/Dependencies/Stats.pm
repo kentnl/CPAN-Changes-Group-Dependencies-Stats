@@ -47,6 +47,10 @@ use MooX::Lsub qw( lsub );
 
 extends 'CPAN::Changes::Group';
 
+
+
+
+
 sub FOREIGNBUILDARGS {
   my ( undef, @args ) = @_;
   if ( @args % 2 == 0 ) {
@@ -315,6 +319,8 @@ For instance, this L<diff|https://metacpan.org/diff/file?target=ETHER/Moose-2.12
   - test: +1 ↓1 -1 (recommends: +2)
 
 Which is far less scary ☺
+
+=for Pod::Coverage FOREIGNBUILDARGS
 
 =head1 AUTHOR
 
