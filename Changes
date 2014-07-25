@@ -1,5 +1,9 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
+0.002001 2014-07-25T20:00:30Z
+ [Bugfix]
+ - Write name sub to be a happier camper with both current and future implementation of ::Group
+
 0.002000 2014-07-24T05:46:13Z
  [00 Major]
  - Reimplement as a subclass of the new CPAN::Changes::Group
