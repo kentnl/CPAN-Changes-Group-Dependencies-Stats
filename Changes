@@ -1,6 +1,8 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
 {{$NEXT}}
+ [Bugfix]
+ - Write name sub to be a happier camper with both current and future implementation of ::Group
 
 0.002000 2014-07-24T05:46:13Z
  [00 Major]
