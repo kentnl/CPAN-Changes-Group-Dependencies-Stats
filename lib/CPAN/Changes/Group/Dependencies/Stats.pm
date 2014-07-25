@@ -51,14 +51,12 @@ extends 'CPAN::Changes::Group';
 
 
 
-sub FOREIGNBUILDARGS {
-  my ( undef, @args ) = @_;
-  if ( @args % 2 == 0 ) {
-    my (%args) = @args;
-    $args{'name'} = 'Dependencies::Stats' unless exists $args{'name'};
-    return %args;
+sub name {
+  my ($self) = @_;
+  if ( not exists $self->{'name'} or not length $self->{'name'} ) {
+    $self->{'name'} = 'Dependencies::Stats';
   }
-  return @args;
+  return $self->{'name'};
 }
 
 lsub prelude          => sub { [] };
