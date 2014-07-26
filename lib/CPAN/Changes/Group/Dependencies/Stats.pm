@@ -13,7 +13,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo qw( extends has );
 use Carp qw( croak );
-use CPAN::Changes 0.29;
+use CPAN::Changes 0.30;
 use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
@@ -51,14 +51,7 @@ extends 'CPAN::Changes::Group';
 
 
 
-sub name {
-  my ($self) = @_;
-  if ( not exists $self->{'name'} or not length $self->{'name'} ) {
-    $self->{'name'} = 'Dependencies::Stats';
-  }
-  return $self->{'name'};
-}
-
+lsub name             => sub { 'Dependencies::Stats' };
 lsub prelude          => sub { [] };
 lsub new_prereqs      => sub { croak 'Required attribute <new_prereqs> was not provided' };
 lsub old_prereqs      => sub { croak 'Required attribute <old_prereqs> was not provided' };

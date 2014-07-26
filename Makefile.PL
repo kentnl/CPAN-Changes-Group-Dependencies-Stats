@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "CPAN::Changes::Group::Dependencies::Stats",
   "PREREQ_PM" => {
-    "CPAN::Changes" => "0.29",
+    "CPAN::Changes" => "0.30",
     "CPAN::Changes::Group" => 0,
     "CPAN::Meta::Prereqs::Diff" => 0,
     "Carp" => 0,
@@ -49,7 +49,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "CPAN::Changes" => "0.29",
+  "CPAN::Changes" => "0.30",
   "CPAN::Changes::Group" => 0,
   "CPAN::Changes::Release" => 0,
   "CPAN::Meta::Prereqs::Diff" => 0,

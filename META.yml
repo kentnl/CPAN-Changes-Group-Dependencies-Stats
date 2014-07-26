@@ -26,7 +26,7 @@ provides:
     file: lib/CPAN/Changes/Group/Dependencies/Stats.pm
     version: '0.002002'
 requires:
-  CPAN::Changes: '0.29'
+  CPAN::Changes: '0.30'
   CPAN::Changes::Group: '0'
   CPAN::Meta::Prereqs::Diff: '0'
   Carp: '0'
@@ -46,7 +46,7 @@ x_BuiltWith:
     CPAN::Changes::Group: 'Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.21.1-sdbm/lib/site_perl/5.21.1/CPAN/Changes/Group.pm'
     CPAN::Changes::Release: 'Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.21.1-sdbm/lib/site_perl/5.21.1/CPAN/Changes/Release.pm'
   modules:
-    CPAN::Changes: '0.29'
+    CPAN::Changes: '0.30'
     CPAN::Meta: '2.141520'
     CPAN::Meta::Prereqs: '2.141520'
     CPAN::Meta::Prereqs::Diff: '0.001000'
@@ -104,7 +104,7 @@ x_BuiltWith:
     MooX::Lsub: '0.001002'
     Pod::Coverage::TrustPod: '0.100003'
     Scalar::Util: '1.39'
-    Test::CPAN::Changes: '0.29'
+    Test::CPAN::Changes: '0.30'
     Test::CPAN::Meta: '0.23'
     Test::Differences: '0.62'
     Test::Kwalitee: '1.19'
