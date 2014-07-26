@@ -1,6 +1,8 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.002002
+ [Changed / runtime requires]
+ - CPAN::Changes 0.29 → 0.30
 
 0.002001 2014-07-25T20:00:30Z
 
