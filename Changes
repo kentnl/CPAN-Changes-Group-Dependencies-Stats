@@ -1,5 +1,13 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
+0.002002 2014-07-26T05:30:18Z
+ [Bugfix]
+ - Properly adapt to fixed 0.30
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002001, see misc/*.deps* for details
+ - runtime: ↑1
+
 0.002001 2014-07-25T20:00:30Z
  [Bugfix]
  - Write name sub to be a happier camper with both current and future implementation of ::Group
