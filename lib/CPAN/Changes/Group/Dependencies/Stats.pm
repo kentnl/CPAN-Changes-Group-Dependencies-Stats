@@ -18,33 +18,6 @@ use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
 
-=head1 SYNOPSIS
-
-  use CPAN::Changes::Release 0.29;
-  use CPAN::Changes::Group::Dependencies::Stats;
-
-  my $s = CPAN::Changes::Group::Dependencies::Stats->new(
-    prelude     => [ 'Change statistics since 1.00' ],
-    new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs,
-    old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs,
-  );
-
-  # Currently slightly complicated due to groups themselves
-  # not presently being pluggable.
-  my $rel = CPAN::Changes::Release->new( version => '1.01' );
-  $rel->attach( $s ) if $s->has_changes;
-  $rel->serialize();
-
-  # RESULT
-  #
-  # [Dependencies::Stats]
-  # - Change statistics since 1.00
-  # - build: -1 (recommends: -1)
-  # - configure: +1 -1 (recommends: +1 -1)
-  # - develop: +5 -5 (suggests: +2 -1)
-  # - test: (recommends: +1 ↑1)
-=cut
-
 extends 'CPAN::Changes::Group';
 
 =for Pod::Coverage FOREIGNBUILDARGS
@@ -221,3 +194,30 @@ sub changes {
 no Moo;
 
 1;
+
+=head1 SYNOPSIS
+
+  use CPAN::Changes::Release 0.29;
+  use CPAN::Changes::Group::Dependencies::Stats;
+
+  my $s = CPAN::Changes::Group::Dependencies::Stats->new(
+    prelude     => [ 'Change statistics since 1.00' ],
+    new_prereqs => CPAN::Meta->load_file('Dist-Foo-1.01/META.json')->effective_prereqs,
+    old_prereqs => CPAN::Meta->load_file('Dist-Foo-1.00/META.json')->effective_prereqs,
+  );
+
+  # Currently slightly complicated due to groups themselves
+  # not presently being pluggable.
+  my $rel = CPAN::Changes::Release->new( version => '1.01' );
+  $rel->attach( $s ) if $s->has_changes;
+  $rel->serialize();
+
+  # RESULT
+  #
+  # [Dependencies::Stats]
+  # - Change statistics since 1.00
+  # - build: -1 (recommends: -1)
+  # - configure: +1 -1 (recommends: +1 -1)
+  # - develop: +5 -5 (suggests: +2 -1)
+  # - test: (recommends: +1 ↑1)
+=cut
