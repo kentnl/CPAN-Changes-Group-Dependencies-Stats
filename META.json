@@ -111,7 +111,7 @@
    "provides" : {
       "CPAN::Changes::Group::Dependencies::Stats" : {
          "file" : "lib/CPAN/Changes/Group/Dependencies/Stats.pm",
-         "version" : "0.002003"
+         "version" : "0.002004"
       }
    },
    "release_status" : "stable",
@@ -126,7 +126,7 @@
          "web" : "https://github.com/kentnl/CPAN-Changes-Group-Dependencies-Stats"
       }
    },
-   "version" : "0.002003",
+   "version" : "0.002004",
    "x_BuiltWith" : {
       "failures" : {
          "CPAN::Changes::Group" : "Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.21.1-sdbm/lib/site_perl/5.21.1/CPAN/Changes/Group.pm",
@@ -622,7 +622,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.002003-source",
+                  "tag" : "0.002004-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -693,7 +693,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.002003",
+                  "tag" : "0.002004",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
