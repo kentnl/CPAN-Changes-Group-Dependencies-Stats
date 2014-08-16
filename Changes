@@ -1,5 +1,24 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
+0.002003 2014-08-15T21:13:47Z
+ [00 Trivial]
+ - CPANDAY!
+ - no code changes.
+ - tests augmented.
+ - whitespace adjusted.
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002002, see misc/*.deps* for details
+ - configure: ↓1
+ - develop: +1 (suggests: ↑1)
+ - test: -4 (recommends: ↑1 -2)
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace
+
+ [Tests]
+ - update Test::ReportPrereqs
+
 0.002002 2014-07-26T05:30:18Z
  [Bugfix]
  - Properly adapt to fixed 0.30
