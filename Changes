@@ -1,6 +1,12 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
 {{$NEXT}}
+ [00 Trivial]
+ - no code changes
+ - Metadata fixes
+
+ [Metadata]
+ - author = kentnl
 
 0.002003 2014-08-15T21:13:47Z
  [00 Trivial]
