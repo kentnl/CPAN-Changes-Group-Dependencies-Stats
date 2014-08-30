@@ -1,5 +1,17 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
+0.002004 2014-08-30T11:44:41Z
+ [00 Trivial]
+ - no code changes
+ - Metadata fixes
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002003, see misc/*.deps* for details
+ - develop: +1 ↑1 (suggests: ↑2)
+
+ [Metadata]
+ - author = kentnl
+
 0.002003 2014-08-15T21:13:47Z
  [00 Trivial]
  - CPANDAY!

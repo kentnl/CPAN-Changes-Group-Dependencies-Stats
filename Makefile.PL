@@ -11,7 +11,7 @@ use ExtUtils::MakeMaker ;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Create a Dependencies::Stats section detailing summarized differences",
-  "AUTHOR" => "Kent Fredric <kentfredric\@gmail.com>",
+  "AUTHOR" => "Kent Fredric <kentnl\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
@@ -37,7 +37,7 @@ my %WriteMakefileArgs = (
     "Test::Differences" => 0,
     "Test::More" => "0.89"
   },
-  "VERSION" => "0.002003",
+  "VERSION" => "0.002004",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
