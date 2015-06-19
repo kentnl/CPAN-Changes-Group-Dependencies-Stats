@@ -21,6 +21,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
     - Moo 1.000008
 
   [ Added / test requires ]
+    - Test::Requires
     - perl 5.008
 
   [ Changed / configure recommends ]
