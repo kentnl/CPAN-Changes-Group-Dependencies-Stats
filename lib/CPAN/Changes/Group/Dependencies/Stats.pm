@@ -1,7 +1,6 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
@@ -17,8 +16,11 @@ use CPAN::Changes 0.30;
 use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
+use charnames qw( :full );
 
 extends 'CPAN::Changes::Group';
+
+=encoding utf-8
 
 =for Pod::Coverage FOREIGNBUILDARGS
 
@@ -29,8 +31,8 @@ lsub prelude          => sub { [] };
 lsub new_prereqs      => sub { croak 'Required attribute <new_prereqs> was not provided' };
 lsub old_prereqs      => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub symbol_Added     => sub { q[+] };
-lsub symbol_Upgrade   => sub { q[↑] };
-lsub symbol_Downgrade => sub { q[↓] };
+lsub symbol_Upgrade   => sub { qq[\N{UPWARDS ARROW}] };
+lsub symbol_Downgrade => sub { qq[\N{DOWNWARDS ARROW}] };
 lsub symbol_Removed   => sub { q[-] };
 lsub symbol_Changed   => sub { q[~] };
 
