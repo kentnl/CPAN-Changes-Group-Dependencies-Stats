@@ -1,6 +1,6 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
-0.002005 2015-06-19T01:13:16Z 2dc7038
+0.002005 2015-06-19T01:14:39Z bdcd4b6
   [ BugFix ]
     - Adapt tests to pass with new CPAN::Changes serialization, which has much more whitespace.
     - Thanks to Slaven Rezić for reporting.
