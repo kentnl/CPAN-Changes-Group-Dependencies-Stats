@@ -4,7 +4,7 @@ use warnings;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
-our $VERSION = '0.002005';
+our $VERSION = '0.002006';
 
 # ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
