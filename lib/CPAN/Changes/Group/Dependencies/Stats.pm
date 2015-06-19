@@ -30,8 +30,8 @@ lsub prelude          => sub { [] };
 lsub new_prereqs      => sub { croak 'Required attribute <new_prereqs> was not provided' };
 lsub old_prereqs      => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub symbol_Added     => sub { q[+] };
-lsub symbol_Upgrade   => sub { qq[\x{2191}] };
-lsub symbol_Downgrade => sub { qq[\x{2193}] };
+lsub symbol_Upgrade   => sub { qq[\N{UPWARDS ARROW}] };
+lsub symbol_Downgrade => sub { qq[\N{DOWNWARDS ARROW}] };
 lsub symbol_Removed   => sub { q[-] };
 lsub symbol_Changed   => sub { q[~] };
 
