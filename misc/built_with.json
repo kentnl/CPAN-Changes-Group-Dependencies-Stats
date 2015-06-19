@@ -1,12 +1,12 @@
 {
    "failures" : {
       "CPAN::Changes::Group" : "Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.22.0/lib/site_perl/5.22.0/CPAN/Changes/Group.pm",
-      "CPAN::Changes::Release" : "Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.22.0/lib/site_perl/5.22.0/CPAN/Changes/Release.pm",
-      "CPAN::Meta::Prereqs::Diff" : "module was not found in INC"
+      "CPAN::Changes::Release" : "Module::MetaData could not parse a version from /home/kent/perl5/perlbrew/perls/5.22.0/lib/site_perl/5.22.0/CPAN/Changes/Release.pm"
    },
    "modules" : {
       "CPAN::Changes" : "0.400001",
       "CPAN::Meta" : "2.150005",
+      "CPAN::Meta::Prereqs::Diff" : "0.001002",
       "Carp" : "1.36",
       "Dist::Zilla" : "5.037",
       "Dist::Zilla::App::Command::bakeini" : "0.002005",
@@ -71,6 +71,7 @@
       "Test::More" : "1.001014",
       "Test::Pod" : "1.50",
       "Test::Pod::Coverage" : "1.10",
+      "Test::Requires" : "0.08",
       "strict" : "1.09",
       "utf8" : "1.17",
       "warnings" : "1.32"

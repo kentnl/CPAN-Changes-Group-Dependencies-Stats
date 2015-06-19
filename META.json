@@ -10,7 +10,7 @@
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : 2
+      "version" : "2"
    },
    "name" : "CPAN-Changes-Group-Dependencies-Stats",
    "prereqs" : {
@@ -119,6 +119,7 @@
             "File::Spec" : "0",
             "Test::Differences" : "0",
             "Test::More" : "0.89",
+            "Test::Requires" : "0",
             "perl" : "5.008"
          }
       }
