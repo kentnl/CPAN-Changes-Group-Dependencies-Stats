@@ -9,7 +9,7 @@ use Test::More;
 use Test::Differences qw( eq_or_diff );
 
 use CPAN::Changes::Group::Dependencies::Stats;
-use CPAN::Changes 0.29;
+use Test::Requires { 'CPAN::Changes' => 0.400001 };
 use CPAN::Changes::Release;
 
 my $release = CPAN::Changes::Release->new(
@@ -36,8 +36,8 @@ my $string = $release->serialize;
 
 eq_or_diff $string, <<'EOF', 'Serialize as expected';
 0.01 2009-07-06
- [Dependencies::Stats]
- - runtime: +1
+  [ Dependencies::Stats ]
+    - runtime: +1
 
 EOF
 

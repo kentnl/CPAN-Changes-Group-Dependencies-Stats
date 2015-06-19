@@ -1,11 +1,10 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package CPAN::Changes::Group::Dependencies::Stats;
 
-our $VERSION = '0.002004';
+our $VERSION = '0.002005';
 
 # ABSTRACT: Create a Dependencies::Stats section detailing summarized differences
 
@@ -17,8 +16,11 @@ use CPAN::Changes 0.30;
 use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
+use charnames qw( :full );
 
 extends 'CPAN::Changes::Group';
+
+
 
 
 
@@ -29,8 +31,8 @@ lsub prelude          => sub { [] };
 lsub new_prereqs      => sub { croak 'Required attribute <new_prereqs> was not provided' };
 lsub old_prereqs      => sub { croak 'Required attribute <old_prereqs> was not provided' };
 lsub symbol_Added     => sub { q[+] };
-lsub symbol_Upgrade   => sub { q[↑] };
-lsub symbol_Downgrade => sub { q[↓] };
+lsub symbol_Upgrade   => sub { qq[\N{UPWARDS ARROW}] };
+lsub symbol_Downgrade => sub { qq[\N{DOWNWARDS ARROW}] };
 lsub symbol_Removed   => sub { q[-] };
 lsub symbol_Changed   => sub { q[~] };
 
@@ -50,6 +52,8 @@ lsub _diff_items => sub {
   );
   return \@diffs;
 };
+
+no Moo;
 
 
 
@@ -191,15 +195,13 @@ sub changes {
   return \@changes;
 }
 
-no Moo;
-
 1;
 
 __END__
 
 =pod
 
-=encoding UTF-8
+=encoding utf-8
 
 =head1 NAME
 
@@ -207,7 +209,7 @@ CPAN::Changes::Group::Dependencies::Stats - Create a Dependencies::Stats section
 
 =head1 VERSION
 
-version 0.002004
+version 0.002005
 
 =head1 SYNOPSIS
 
@@ -228,12 +230,20 @@ version 0.002004
 
   # RESULT
   #
-  # [Dependencies::Stats]
-  # - Change statistics since 1.00
-  # - build: -1 (recommends: -1)
-  # - configure: +1 -1 (recommends: +1 -1)
-  # - develop: +5 -5 (suggests: +2 -1)
-  # - test: (recommends: +1 ↑1)
+  # [ Dependencies::Stats ]
+  #   - Change statistics since 1.00
+  #   - build: -1 (recommends: -1)
+  #   - configure: +1 -1 (recommends: +1 -1)
+  #   - develop: +5 -5 (suggests: +2 -1)
+  #   - test: (recommends: +1 ↑1)
+
+=head1 DESCRIPTION
+
+This module is a utility tool that produces short, summarized details about changes in dependencies between two sets
+of prerequisites such that one can visually identify at a glance the general nature of the dependency changes without
+being swamped by the specifics, only looking into the specifics when the summary indicates it is warranted.
+
+This aims to be a utility to assist downstream in quickly assessing effort when performing manual updates.
 
 =head1 METHODS
 
@@ -276,11 +286,11 @@ C<%symbol> is:
 
 For instance, this L<diff|https://metacpan.org/diff/file?target=ETHER/Moose-2.1210/META.json&source=ETHER/Moose-2.1005/META.json> would display as:
 
-  [Dependencies::Stats]
-  - configure: +2
-  - develop: +12 ↑3 -2 (suggests: +58)
-  - runtime: +3
-  - test: +1 ↓1 -1 (recommends: +2)
+  [ Dependencies::Stats ]
+    - configure: +2
+    - develop: +12 ↑3 -2 (suggests: +58)
+    - runtime: +3
+    - test: +1 ↓1 -1 (recommends: +2)
 
 Which is far less scary ☺
 
@@ -292,7 +302,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

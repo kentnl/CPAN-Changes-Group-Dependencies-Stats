@@ -1,61 +1,114 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
-0.002004
- [Added / develop requires]
- - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
+0.002005
+  [ Added / configure requires ]
+    - perl 5.006
 
- [Changed / develop requires]
- - Test::Kwalitee 1.12 → 1.21
+  [ Added / develop recommends ]
+    - Test::More 0.99
 
- [Changed / develop suggests]
- - Dist::Zilla::App::Command::bakeini 0.001001 → 0.001002
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.020000
+  [ Added / develop requires ]
+    - Dist::Zilla 5
+    - Dist::Zilla::Plugin::Author::KENTNL::TravisCI 0.001002
+    - Dist::Zilla::Plugin::Prereqs::AuthorDeps
+    - Dist::Zilla::Plugin::Prereqs::Upgrade
+    - Dist::Zilla::Plugin::Readme::Brief
+    - Dist::Zilla::Plugin::Test::EOL
+    - Test::EOL
+    - Test::More 0.88
+
+  [ Added / runtime recommends ]
+    - Moo 1.000008
+
+  [ Added / runtime requires ]
+    - charnames
+
+  [ Added / test recommends ]
+    - CPAN::Changes 0.400001
+
+  [ Added / test requires ]
+    - Test::Requires
+    - perl 5.008
+    - utf8
+
+  [ Changed / configure recommends ]
+    - ExtUtils::MakeMaker 6.98 → 7.00
+
+  [ Changed / develop requires ]
+    - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001 → 0.004002
+    - Dist::Zilla::Plugin::Git::NextRelease 0 → 0.004000
+    - Dist::Zilla::Plugin::MetaData::BuiltWith 0 → 1.004000
+
+  [ Changed / develop suggests ]
+    - Dist::Zilla::App::Command::bakeini 0.001002 → 0.002005
+    - Dist::Zilla::PluginBundle::Author::KENTNL 2.020000 → 2.024001
+
+  [ Changed / test recommends ]
+    - ExtUtils::MakeMaker 6.98 → 7.00
+    - Test::More 1.001003 → 0.99
+
+  [ Removed / develop requires ]
+    - Dist::Zilla::Plugin::EOLTests
+    - Dist::Zilla::Plugin::ReadmeFromPod
+
+  [ Removed / runtime requires ]
+    - utf8
+
+0.002004 2014-08-30T11:44:41Z
+  [ Added / develop requires ]
+    - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
+
+  [ Changed / develop requires ]
+    - Test::Kwalitee 1.12 → 1.21
+
+  [ Changed / develop suggests ]
+    - Dist::Zilla::App::Command::bakeini 0.001001 → 0.001002
+    - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.020000
 
 0.002003 2014-08-15T21:13:47Z
- [Added / develop requires]
- - Dist::Zilla::Plugin::Git::Contributors 0.006
+  [ Added / develop requires ]
+    - Dist::Zilla::Plugin::Git::Contributors 0.006
 
- [Changed / configure requires]
- - ExtUtils::MakeMaker 6.30 → 0
+  [ Changed / configure requires ]
+    - ExtUtils::MakeMaker 6.30 → 0
 
- [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.016004 → 2.017002
+  [ Changed / develop suggests ]
+    - Dist::Zilla::PluginBundle::Author::KENTNL 2.016004 → 2.017002
 
- [Changed / test recommends]
- - CPAN::Meta 0 → 2.120900
+  [ Changed / test recommends ]
+    - CPAN::Meta 0 → 2.120900
 
- [Removed / test recommends]
- - CPAN::Meta::Prereqs
- - CPAN::Meta::Requirements 2.120900
+  [ Removed / test recommends ]
+    - CPAN::Meta::Prereqs
+    - CPAN::Meta::Requirements 2.120900
 
- [Removed / test requires]
- - File::Spec::Functions
- - List::Util
- - Scalar::Util
- - version 0.77
+  [ Removed / test requires ]
+    - File::Spec::Functions
+    - List::Util
+    - Scalar::Util
+    - version 0.77
 
 0.002002 2014-07-26T05:30:18Z
- [Changed / runtime requires]
- - CPAN::Changes 0.29 → 0.30
+  [ Changed / runtime requires ]
+    - CPAN::Changes 0.29 → 0.30
 
 0.002001 2014-07-25T20:00:30Z
 
 0.002000 2014-07-24T05:46:13Z
- [Added / runtime requires]
- - CPAN::Changes 0.29
- - CPAN::Changes::Group
+  [ Added / runtime requires ]
+    - CPAN::Changes 0.29
+    - CPAN::Changes::Group
 
- [Added / test recommends]
- - CPAN::Meta::Prereqs
+  [ Added / test recommends ]
+    - CPAN::Meta::Prereqs
 
- [Added / test requires]
- - CPAN::Changes::Release
- - File::Spec
- - Scalar::Util
+  [ Added / test requires ]
+    - CPAN::Changes::Release
+    - File::Spec
+    - Scalar::Util
 
- [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.016003 → 2.016004
+  [ Changed / develop suggests ]
+    - Dist::Zilla::PluginBundle::Author::KENTNL 2.016003 → 2.016004
 
- [Changed / test requires]
- - version 0 → 0.77
-
+  [ Changed / test requires ]
+    - version 0 → 0.77
