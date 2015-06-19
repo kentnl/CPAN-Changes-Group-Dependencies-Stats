@@ -221,4 +221,12 @@ no Moo;
   #   - develop: +5 -5 (suggests: +2 -1)
   #   - test: (recommends: +1 ↑1)
 
+=head1 DESCRIPTION
+
+This module is a utility tool that produces short, summarized details about changes in dependencies between two sets
+of prerequisites such that one can visually identify at a glance the general nature of the dependency changes without
+being swamped by the specifics, only looking into the specifics when the summary indicates it is warranted.
+
+This aims to be a utility to assist downstream in quickly assessing effort when performing manual updates.
+
 =cut
