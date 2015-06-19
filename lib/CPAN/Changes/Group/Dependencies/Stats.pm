@@ -53,6 +53,8 @@ lsub _diff_items => sub {
   return \@diffs;
 };
 
+no Moo;
+
 =method C<has_changes>
 
 Returns whether this group has any interesting changes or not.
@@ -192,8 +194,6 @@ sub changes {
   }
   return \@changes;
 }
-
-no Moo;
 
 1;
 
