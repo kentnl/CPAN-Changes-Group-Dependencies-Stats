@@ -169,11 +169,11 @@ C<%symbol> is:
 
 For instance, this L<diff|https://metacpan.org/diff/file?target=ETHER/Moose-2.1210/META.json&source=ETHER/Moose-2.1005/META.json> would display as:
 
-  [Dependencies::Stats]
-  - configure: +2
-  - develop: +12 ↑3 -2 (suggests: +58)
-  - runtime: +3
-  - test: +1 ↓1 -1 (recommends: +2)
+  [ Dependencies::Stats ]
+    - configure: +2
+    - develop: +12 ↑3 -2 (suggests: +58)
+    - runtime: +3
+    - test: +1 ↓1 -1 (recommends: +2)
 
 Which is far less scary ☺
 
@@ -214,10 +214,11 @@ no Moo;
 
   # RESULT
   #
-  # [Dependencies::Stats]
-  # - Change statistics since 1.00
-  # - build: -1 (recommends: -1)
-  # - configure: +1 -1 (recommends: +1 -1)
-  # - develop: +5 -5 (suggests: +2 -1)
-  # - test: (recommends: +1 ↑1)
+  # [ Dependencies::Stats ]
+  #   - Change statistics since 1.00
+  #   - build: -1 (recommends: -1)
+  #   - configure: +1 -1 (recommends: +1 -1)
+  #   - develop: +5 -5 (suggests: +2 -1)
+  #   - test: (recommends: +1 ↑1)
+
 =cut
