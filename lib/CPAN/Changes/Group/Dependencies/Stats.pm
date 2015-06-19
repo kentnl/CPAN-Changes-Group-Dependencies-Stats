@@ -16,6 +16,7 @@ use CPAN::Changes 0.30;
 use CPAN::Changes::Group;
 use CPAN::Meta::Prereqs::Diff;
 use MooX::Lsub qw( lsub );
+use charnames;
 
 extends 'CPAN::Changes::Group';
 

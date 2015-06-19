@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
     "Carp" => 0,
     "Moo" => 0,
     "MooX::Lsub" => 0,
+    "charnames" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -56,6 +57,7 @@ my %FallbackPrereqs = (
   "Test::Differences" => 0,
   "Test::More" => "0.89",
   "Test::Requires" => 0,
+  "charnames" => 0,
   "strict" => 0,
   "utf8" => 0,
   "warnings" => 0
