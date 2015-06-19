@@ -53,6 +53,8 @@ lsub _diff_items => sub {
   return \@diffs;
 };
 
+no Moo;
+
 
 
 
@@ -192,8 +194,6 @@ sub changes {
   }
   return \@changes;
 }
-
-no Moo;
 
 1;
 
