@@ -228,12 +228,12 @@ version 0.002005
 
   # RESULT
   #
-  # [Dependencies::Stats]
-  # - Change statistics since 1.00
-  # - build: -1 (recommends: -1)
-  # - configure: +1 -1 (recommends: +1 -1)
-  # - develop: +5 -5 (suggests: +2 -1)
-  # - test: (recommends: +1 ↑1)
+  # [ Dependencies::Stats ]
+  #   - Change statistics since 1.00
+  #   - build: -1 (recommends: -1)
+  #   - configure: +1 -1 (recommends: +1 -1)
+  #   - develop: +5 -5 (suggests: +2 -1)
+  #   - test: (recommends: +1 ↑1)
 
 =head1 METHODS
 
