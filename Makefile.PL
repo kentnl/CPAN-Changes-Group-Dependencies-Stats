@@ -34,10 +34,9 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "Test::Differences" => 0,
     "Test::More" => "0.89",
-    "Test::Requires" => 0,
     "utf8" => 0
   },
-  "VERSION" => "0.002005",
+  "VERSION" => "0.002006",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -56,7 +55,6 @@ my %FallbackPrereqs = (
   "MooX::Lsub" => 0,
   "Test::Differences" => 0,
   "Test::More" => "0.89",
-  "Test::Requires" => 0,
   "charnames" => 0,
   "strict" => 0,
   "utf8" => 0,

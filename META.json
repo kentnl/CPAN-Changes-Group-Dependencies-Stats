@@ -109,7 +109,7 @@
       },
       "test" : {
          "recommends" : {
-            "CPAN::Changes" : "0.400001",
+            "CPAN::Changes" : "0.400002",
             "CPAN::Meta" : "2.120900",
             "ExtUtils::MakeMaker" : "7.00",
             "Test::More" : "0.99"
@@ -120,7 +120,6 @@
             "File::Spec" : "0",
             "Test::Differences" : "0",
             "Test::More" : "0.89",
-            "Test::Requires" : "0",
             "perl" : "5.008",
             "utf8" : "0"
          }
@@ -129,7 +128,7 @@
    "provides" : {
       "CPAN::Changes::Group::Dependencies::Stats" : {
          "file" : "lib/CPAN/Changes/Group/Dependencies/Stats.pm",
-         "version" : "0.002005"
+         "version" : "0.002006"
       }
    },
    "release_status" : "stable",
@@ -144,7 +143,7 @@
          "web" : "https://github.com/kentnl/CPAN-Changes-Group-Dependencies-Stats"
       }
    },
-   "version" : "0.002005",
+   "version" : "0.002006",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -161,7 +160,7 @@
          {
             "class" : "Dist::Zilla::Plugin::GithubMeta",
             "name" : "@Author::KENTNL/GithubMeta",
-            "version" : "0.50"
+            "version" : "0.52"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaProvides::Package",
@@ -514,7 +513,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes",
             "name" : "@Author::KENTNL/Author::KENTNL::RecommendFixes",
-            "version" : "0.004002"
+            "version" : "0.004003"
          },
          {
             "class" : "Dist::Zilla::Plugin::Readme::Brief",
@@ -601,7 +600,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.002005-source",
+                  "tag" : "0.002006-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -672,7 +671,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.002005",
+                  "tag" : "0.002006",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
