@@ -3,76 +3,76 @@ Release history for CPAN-Changes-Group-Dependencies-Stats
 {{$NEXT}}
 
 0.002005 2015-06-19T01:36:20Z d86efcc
-  [ BugFix ]
-    - Adapt tests to pass with new CPAN::Changes serialization, which has much more whitespace.
-    - Thanks to Slaven Rezić for reporting.
-    - Closes #1
+ [BugFix]
+ - Adapt tests to pass with new CPAN::Changes serialization, which has much more whitespace.
+ - Thanks to Slaven Rezić for reporting.
+ - Closes #1
 
-  [ Dependencies::Stats ]
-    - Dependencies changed since 0.002004, see misc/*.deps* for details
-    - configure: +1 (recommends: ↑1)
-    - develop: +8 ↑3 -2 (recommends: +1, suggests: ↑2)
-    - runtime: +1 -1 (recommends: +1)
-    - test: +3 (recommends: +1 ↑1 ↓1)
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002004, see misc/*.deps* for details
+ - configure: +1 (recommends: ↑1)
+ - develop: +8 ↑3 -2 (recommends: +1, suggests: ↑2)
+ - runtime: +1 -1 (recommends: +1)
+ - test: +3 (recommends: +1 ↑1 ↓1)
 
 0.002004 2014-08-30T11:44:41Z
-  [ 00 Trivial ]
-    - no code changes
-    - Metadata fixes
+ [00 Trivial]
+ - no code changes
+ - Metadata fixes
 
-  [ Dependencies::Stats ]
-    - Dependencies changed since 0.002003, see misc/*.deps* for details
-    - develop: +1 ↑1 (suggests: ↑2)
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002003, see misc/*.deps* for details
+ - develop: +1 ↑1 (suggests: ↑2)
 
-  [ Metadata ]
-    - author = kentnl
+ [Metadata]
+ - author = kentnl
 
 0.002003 2014-08-15T21:13:47Z
-  [ 00 Trivial ]
-    - CPANDAY!
-    - no code changes.
-    - tests augmented.
-    - whitespace adjusted.
+ [00 Trivial]
+ - CPANDAY!
+ - no code changes.
+ - tests augmented.
+ - whitespace adjusted.
 
-  [ Dependencies::Stats ]
-    - Dependencies changed since 0.002002, see misc/*.deps* for details
-    - configure: ↓1
-    - develop: +1 (suggests: ↑1)
-    - test: -4 (recommends: ↑1 -2)
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002002, see misc/*.deps* for details
+ - configure: ↓1
+ - develop: +1 (suggests: ↑1)
+ - test: -4 (recommends: ↑1 -2)
 
-  [ Misc ]
-    - Improve source side POD to reduce build side whitespace
+ [Misc]
+ - Improve source side POD to reduce build side whitespace
 
-  [ Tests ]
-    - update Test::ReportPrereqs
+ [Tests]
+ - update Test::ReportPrereqs
 
 0.002002 2014-07-26T05:30:18Z
-  [ Bugfix ]
-    - Properly adapt to fixed 0.30
+ [Bugfix]
+ - Properly adapt to fixed 0.30
 
-  [ Dependencies::Stats ]
-    - Dependencies changed since 0.002001, see misc/*.deps* for details
-    - runtime: ↑1
+ [Dependencies::Stats]
+ - Dependencies changed since 0.002001, see misc/*.deps* for details
+ - runtime: ↑1
 
 0.002001 2014-07-25T20:00:30Z
-  [ Bugfix ]
-    - Write name sub to be a happier camper with both current and future implementation of ::Group
+ [Bugfix]
+ - Write name sub to be a happier camper with both current and future implementation of ::Group
 
 0.002000 2014-07-24T05:46:13Z
-  [ 00 Major ]
-    - Reimplement as a subclass of the new CPAN::Changes::Group
-    - This greatly simplifies attaching this object to a release.
-    - Add a 'prelude' property for arbritray pre-text to inject in a group.
-    - Add a 'name' property which can be set during construction to define the groups name
-    - Add a 'has_changes' property which will determine if there are changes prior to doing any internal formatting,
-      allowing usage as a pre-check if you don't want to add over-simplistic change nodes. ( Maybe I should override
-      is_empty here, not sure )
+ [00 Major]
+ - Reimplement as a subclass of the new CPAN::Changes::Group
+ - This greatly simplifies attaching this object to a release.
+ - Add a 'prelude' property for arbritray pre-text to inject in a group.
+ - Add a 'name' property which can be set during construction to define the groups name
+ - Add a 'has_changes' property which will determine if there are changes prior to doing any internal formatting,
+   allowing usage as a pre-check if you don't want to add over-simplistic change nodes. ( Maybe I should override
+   is_empty here, not sure )
 
-  [ Dependencies::Stats ]
-    - Dependencies changed since 0.001000, see misc/*.deps* for details
-    - develop: (suggests: ↑1)
-    - runtime: +2
-    - test: +3 ↑1 (recommends: +1)
+ [Dependencies::Stats]
+ - Dependencies changed since 0.001000, see misc/*.deps* for details
+ - develop: (suggests: ↑1)
+ - runtime: +2
+ - test: +3 ↑1 (recommends: +1)
 
 0.001000 2014-07-16T10:47:37Z
-  - First version.
+ - First version.
