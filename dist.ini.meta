@@ -21,4 +21,4 @@ srcreadme         = mkdn
 ; auto_prereqs_skip = File::Find
 
 [Prereqs / TestRecommends ]
-CPAN::Changes = != 0.400001
+CPAN::Changes = 0.400002

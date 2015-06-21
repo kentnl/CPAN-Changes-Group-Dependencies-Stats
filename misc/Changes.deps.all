@@ -1,6 +1,11 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.002006
+ [Changed / test recommends]
+ - CPAN::Changes 0.400001 → != 0.400001
+
+ [Removed / test requires]
+ - Test::Requires
 
 0.002005 2015-06-19T01:36:20Z
  [Added / configure requires]

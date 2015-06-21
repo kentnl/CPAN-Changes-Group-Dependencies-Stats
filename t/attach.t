@@ -20,7 +20,7 @@ my $sample = <<'EOF';
 EOF
 
 if ( CPAN::Changes->load_string( $sample )->serialize ne $sample ) {
-  plan skip_all => "Serialization scheme of CPAN::Changes $CPAN::Changes::VERSION is different to that of 0.30";
+  plan skip_all => "Serialization scheme of CPAN::Changes $CPAN::Changes::VERSION is different to that of 0.400002";
 }
 
 
