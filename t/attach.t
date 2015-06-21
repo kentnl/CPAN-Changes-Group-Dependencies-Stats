@@ -6,23 +6,25 @@ use Test::More;
 # FILENAME: attach.t
 # CREATED: 07/24/14 17:13:46 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Test attaching data to a release
-use Test::Differences qw( eq_or_diff );
-
-use CPAN::Changes::Group::Dependencies::Stats;
 use CPAN::Changes;
-use CPAN::Changes::Release;
 
-my $sample = <<'EOF';
+BEGIN {
+  my $sample_version = '0.400002';
+  my $sample         = <<'EOF';
 1.7.5 2013-08-01T09:48:11Z
  [Group]
  - Child Entry Line 1
  - Child Entry Line 2
 EOF
 
-if ( CPAN::Changes->load_string( $sample )->serialize ne $sample ) {
-  plan skip_all => "Serialization scheme of CPAN::Changes $CPAN::Changes::VERSION is different to that of 0.400002";
+  return if CPAN::Changes->load_string($sample)->serialize eq $sample;
+  plan
+    skip_all => sprintf "Serialization scheme of CPAN::Changes %s is different to that of %s",
+    $CPAN::Changes::VERSION, $sample_version;
 }
-
+use Test::Differences qw( eq_or_diff );
+use CPAN::Changes::Group::Dependencies::Stats;
+use CPAN::Changes::Release;
 
 my $release = CPAN::Changes::Release->new(
   version => '0.01',

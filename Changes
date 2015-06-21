@@ -1,13 +1,13 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
-0.002006 2015-06-21T18:55:50Z 56b5c10
+0.002006 2015-06-21T19:17:45Z d4f6f04
  [BugFix]
- - Recode test dependent on serialaztion to check for changes in serialization scheme before continuing.
+ - Recode test dependent on serialization to check for changes in serialization scheme before continuing.
  - Test is subsequently recoded to 0.400002 standard, and will skip testing if it doesn't match that standard
 
  [Dependencies::Stats]
  - Dependencies changed since 0.002005, see misc/*.deps* for details
- - test: -1 (recommends: ~1)
+ - test: -1 (recommends: ↑1)
 
 0.002005 2015-06-19T01:36:20Z d86efcc
  [BugFix]
