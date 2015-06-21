@@ -9,8 +9,20 @@ use Test::More;
 use Test::Differences qw( eq_or_diff );
 
 use CPAN::Changes::Group::Dependencies::Stats;
-use Test::Requires { 'CPAN::Changes' => 0.400001 };
+use CPAN::Changes;
 use CPAN::Changes::Release;
+
+my $sample = <<'EOF';
+1.7.5 2013-08-01T09:48:11Z
+ [Group]
+ - Child Entry Line 1
+ - Child Entry Line 2
+EOF
+
+if ( CPAN::Changes->load_string( $sample )->serialize ne $sample ) {
+  plan skip_all => "Serialization scheme of CPAN::Changes $CPAN::Changes::VERSION is different to that of 0.30";
+}
+
 
 my $release = CPAN::Changes::Release->new(
   version => '0.01',
@@ -36,8 +48,8 @@ my $string = $release->serialize;
 
 eq_or_diff $string, <<'EOF', 'Serialize as expected';
 0.01 2009-07-06
-  [ Dependencies::Stats ]
-    - runtime: +1
+ [Dependencies::Stats]
+ - runtime: +1
 
 EOF
 

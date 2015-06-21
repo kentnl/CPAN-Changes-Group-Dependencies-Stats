@@ -109,7 +109,7 @@
       },
       "test" : {
          "recommends" : {
-            "CPAN::Changes" : "0.400001",
+            "CPAN::Changes" : "!= 0.400001",
             "CPAN::Meta" : "2.120900",
             "ExtUtils::MakeMaker" : "7.00",
             "Test::More" : "0.99"
@@ -120,7 +120,6 @@
             "File::Spec" : "0",
             "Test::Differences" : "0",
             "Test::More" : "0.89",
-            "Test::Requires" : "0",
             "perl" : "5.008",
             "utf8" : "0"
          }
@@ -161,7 +160,7 @@
          {
             "class" : "Dist::Zilla::Plugin::GithubMeta",
             "name" : "@Author::KENTNL/GithubMeta",
-            "version" : "0.50"
+            "version" : "0.52"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaProvides::Package",
@@ -514,7 +513,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes",
             "name" : "@Author::KENTNL/Author::KENTNL::RecommendFixes",
-            "version" : "0.004002"
+            "version" : "0.004003"
          },
          {
             "class" : "Dist::Zilla::Plugin::Readme::Brief",
