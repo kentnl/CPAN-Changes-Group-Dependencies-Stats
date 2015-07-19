@@ -1,6 +1,9 @@
 Release history for CPAN-Changes-Group-Dependencies-Stats
 
 {{$NEXT}}
+ [Bugfix]
+ - Further enhance guards against test failures in future CPAN::Changes serialization forms.
+
  [Dependencies::Stats]
  - Dependencies changed since 0.002006, see misc/*.deps* for details
  - develop: +3 -1 (suggests: ↑1)
