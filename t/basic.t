@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 53;
 use Test::Differences;
 
 # ABSTRACT: Basic comparison
@@ -159,5 +159,3 @@ for my $phase (qw (  runtime build configure test develop )) {
     'Mulitmix';
 
 }
-done_testing;
-

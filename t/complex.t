@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 1;
 use Test::Differences;
 
 # ABSTRACT: Complex comparison
@@ -19,5 +19,3 @@ use CPAN::Changes::Group::Dependencies::Stats;
 
   eq_or_diff $diff->changes, ["runtime: ~1"], 'Complex deps changed.';
 }
-done_testing;
-
