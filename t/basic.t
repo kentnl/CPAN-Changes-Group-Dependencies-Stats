@@ -17,99 +17,96 @@ use CPAN::Changes::Group::Dependencies::Stats;
   eq_or_diff $diff->changes, [], 'No prereqs';
 }
 for my $phase (qw (  runtime build configure test develop )) {
-  subtest "$phase basics" => sub {
-    {
+  note "Beginning: $phase basics ]---";
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      new_prereqs => { $phase => { requires => { Moose => 0 } } },
+      old_prereqs => {},
+    );
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => { $phase => { requires => { Moose => 0 } } },
-        old_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: +1"], 'Simple add dep';
+  }
+  {
 
-      eq_or_diff $diff->changes, ["$phase: +1"], 'Simple add dep';
-    }
-    {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      new_prereqs => { $phase => { requires => { Moose => 0 }, recommends => { Moose => 1 } } },
+      old_prereqs => {},
+    );
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => { $phase => { requires => { Moose => 0 }, recommends => { Moose => 1 } } },
-        old_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: +1 (recommends: +1)"], 'Simple add recommends';
+  }
+  {
 
-      eq_or_diff $diff->changes, ["$phase: +1 (recommends: +1)"], 'Simple add recommends';
-    }
-    {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      new_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 1 } } },
+      old_prereqs => {},
+    );
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 1 } } },
-        old_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: +1 (suggests: +1)"], 'Simple add suggests';
+  }
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      new_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
+      old_prereqs => {},
+    );
 
-      eq_or_diff $diff->changes, ["$phase: +1 (suggests: +1)"], 'Simple add suggests';
-    }
-    {
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
-        old_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: +1 (recommends: +1, suggests: +1)"], 'Simple add suggests+add recommends';
+  }
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      new_prereqs => { $phase => { suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
+      old_prereqs => {},
+    );
 
-      eq_or_diff $diff->changes, ["$phase: +1 (recommends: +1, suggests: +1)"], 'Simple add suggests+add recommends';
-    }
-    {
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        new_prereqs => { $phase => { suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
-        old_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: (recommends: +1, suggests: +1)"], 'Simple add suggests+add recommends-requires';
+  }
 
-      eq_or_diff $diff->changes, ["$phase: (recommends: +1, suggests: +1)"], 'Simple add suggests+add recommends-requires';
-    }
+  note "Ending: $phase basics ]---";
+  note "Beginning: $phase remove basics ]---";
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      old_prereqs => { $phase => { requires => { Moose => 0 } } },
+      new_prereqs => {},
+    );
 
-  };
-  subtest "$phase remove basics" => sub {
-    {
+    eq_or_diff $diff->changes, ["$phase: -1"], 'Simple remove dep';
+  }
+  {
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        old_prereqs => { $phase => { requires => { Moose => 0 } } },
-        new_prereqs => {},
-      );
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      old_prereqs => { $phase => { requires => { Moose => 0 }, recommends => { Moose => 1 } } },
+      new_prereqs => {},
+    );
 
-      eq_or_diff $diff->changes, ["$phase: -1"], 'Simple remove dep';
-    }
-    {
+    eq_or_diff $diff->changes, ["$phase: -1 (recommends: -1)"], 'Simple remove recommends';
+  }
+  {
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        old_prereqs => { $phase => { requires => { Moose => 0 }, recommends => { Moose => 1 } } },
-        new_prereqs => {},
-      );
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      old_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 1 } } },
+      new_prereqs => {},
+    );
 
-      eq_or_diff $diff->changes, ["$phase: -1 (recommends: -1)"], 'Simple remove recommends';
-    }
-    {
+    eq_or_diff $diff->changes, ["$phase: -1 (suggests: -1)"], 'Simple remove suggests';
+  }
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      old_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
+      new_prereqs => {},
+    );
 
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        old_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 1 } } },
-        new_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: -1 (recommends: -1, suggests: -1)"], 'Simple remove suggests+remove recommends';
+  }
+  {
+    my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
+      old_prereqs => { $phase => { suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
+      new_prereqs => {},
+    );
 
-      eq_or_diff $diff->changes, ["$phase: -1 (suggests: -1)"], 'Simple remove suggests';
-    }
-    {
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        old_prereqs => { $phase => { requires => { Moose => 0 }, suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
-        new_prereqs => {},
-      );
+    eq_or_diff $diff->changes, ["$phase: (recommends: -1, suggests: -1)"], 'Simple remove suggests+remove recommends-requires';
+  }
 
-      eq_or_diff $diff->changes, ["$phase: -1 (recommends: -1, suggests: -1)"], 'Simple remove suggests+remove recommends';
-    }
-    {
-      my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
-        old_prereqs => { $phase => { suggests => { Moose => 2 }, recommends => { 'Moose' => 1 } } },
-        new_prereqs => {},
-      );
-
-      eq_or_diff $diff->changes, ["$phase: (recommends: -1, suggests: -1)"], 'Simple remove suggests+remove recommends-requires';
-    }
-
-  };
-
+  note "Ending: $phase remove basics ]---";
 }
 {
   my $diff = CPAN::Changes::Group::Dependencies::Stats->new(
@@ -149,7 +146,6 @@ for my $phase (qw (  runtime build configure test develop )) {
       configure => { recommends => { 'Moose' => 1 } },
       build     => { suggests   => { Moose   => 2 }, recommends => { 'Moose' => 1 } },
       test      => { suggests   => { Moose   => 2 }, recommends => { 'Moose' => 1 } },
-
     },
   );
 
