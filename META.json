@@ -133,7 +133,7 @@
    "provides" : {
       "CPAN::Changes::Group::Dependencies::Stats" : {
          "file" : "lib/CPAN/Changes/Group/Dependencies/Stats.pm",
-         "version" : "0.002008"
+         "version" : "0.002009"
       }
    },
    "release_status" : "stable",
@@ -148,7 +148,7 @@
          "web" : "https://github.com/kentnl/CPAN-Changes-Group-Dependencies-Stats"
       }
    },
-   "version" : "0.002008",
+   "version" : "0.002009",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -678,7 +678,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002008-source",
+                  "tag" : "0.002009-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v"
                },
@@ -772,7 +772,7 @@
                   "branch" : "releases",
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "0.002008",
+                  "tag" : "0.002009",
                   "tag_format" : "%v",
                   "tag_message" : "v%v"
                },
