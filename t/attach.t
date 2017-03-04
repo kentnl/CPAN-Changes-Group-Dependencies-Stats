@@ -39,6 +39,7 @@ EOF
     skip_all => sprintf "Serialization scheme of CPAN::Changes %s is different to that of %s",
     $CPAN::Changes::VERSION, $sample_version;
 }
+plan tests => 4;
 local $TODO;
 if ( not eval "CPAN::Changes->VERSION(q[0.500]); 1" ) {
   $TODO = "Legacy serialization scheme";
@@ -78,6 +79,3 @@ eq_or_diff $string, <<'EOF', 'Serialize as expected';
  [Dependencies::Stats]
  - runtime: +1
 EOF
-
-done_testing;
-

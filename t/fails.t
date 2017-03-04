@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 4;
 
 # ABSTRACT: Things that fail
 use CPAN::Changes::Group::Dependencies::Stats;
@@ -59,6 +59,3 @@ is_fail 'Missing prereq old' => sub {
 isnt_fail 'Missing prereq old' => sub {
   CPAN::Changes::Group::Dependencies::Stats->new( new_prereqs => {}, old_prereqs => {} )->changes;
 };
-
-done_testing;
-
